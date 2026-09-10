@@ -21,7 +21,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title="An independent advisor, accountable to one interest — the client's"
+        title="An independent advisor, accountable to one interest — the client's best interests"
         lead={company.descriptionShort}
       />
 
