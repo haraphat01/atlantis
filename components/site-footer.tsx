@@ -11,12 +11,8 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-obsidian text-chalk-soft">
+    <footer className="relative overflow-hidden border-t border-obsidian-line bg-obsidian text-chalk-soft">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint opacity-40" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 -top-28 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(47,104,240,0.16),transparent_66%)] blur-2xl"
-      />
       <Container className="relative py-20">
         <div className="flex flex-col gap-10 border-b border-white/10 pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-md">
@@ -34,7 +30,7 @@ export function SiteFooter() {
             </ButtonLink>
             <a
               href={`mailto:${company.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3.5 text-sm font-medium text-chalk transition-colors hover:border-white/45 hover:bg-white/[0.06]"
+              className="inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-3.5 text-sm font-medium text-chalk transition-colors hover:border-white/45 hover:bg-white/[0.06]"
             >
               <Mail className="h-4 w-4" aria-hidden />
               {company.email}

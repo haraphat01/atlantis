@@ -17,6 +17,10 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="The same rigour, adapted to your risk and compliance context"
         lead="Cybersecurity pressures are not identical across sectors. We shape scope, frameworks, and priorities around the risks and obligations that actually apply to your organization."
+        image={{
+          src: "/images/industries-team.jpg",
+          alt: "A team collaborating around a laptop in a modern office",
+        }}
       />
 
       <Section>

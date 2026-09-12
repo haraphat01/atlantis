@@ -39,10 +39,6 @@ export default async function IndustryDetailPage(
     <>
       <section className="relative overflow-hidden border-b border-line bg-mist">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-ledger mask-fade-b opacity-70" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-32 -top-40 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,104,240,0.12),transparent_70%)] blur-2xl"
-        />
         <Container className="relative py-16 sm:py-24">
           <nav
             className="flex items-center gap-1.5 text-sm text-ink-faint"
@@ -88,13 +84,9 @@ export default async function IndustryDetailPage(
                 <StaggerItem key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}
-                    className="group relative flex gap-4 overflow-hidden rounded-2xl border border-line bg-surface p-5 transition-colors duration-300 hover:border-line-strong hover:bg-[#fdfcfa]"
+                    className="group relative flex gap-4 rounded-lg border border-line bg-surface p-5 transition-colors duration-200 hover:border-accent/40"
                   >
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"
-                    />
-                    <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-obsidian text-chalk transition-colors group-hover:bg-accent">
+                    <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-md bg-obsidian text-chalk transition-colors group-hover:bg-accent">
                       <ServiceIcon slug={s.slug} className="h-4 w-4" />
                     </span>
                     <div>

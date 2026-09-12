@@ -38,10 +38,6 @@ export default async function ServiceDetailPage(props: PageProps<"/services/[slu
     <>
       <section className="relative overflow-hidden border-b border-line bg-mist">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-ledger mask-fade-b opacity-70" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-32 -top-40 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,104,240,0.12),transparent_70%)] blur-2xl"
-        />
         <Container className="relative py-16 sm:py-24">
           <nav
             className="flex items-center gap-1.5 text-sm text-ink-faint"
@@ -54,7 +50,7 @@ export default async function ServiceDetailPage(props: PageProps<"/services/[slu
             <span className="text-ink-soft">{service.title}</span>
           </nav>
           <Reveal className="mt-8 max-w-3xl">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-obsidian text-chalk">
+            <span className="grid h-14 w-14 place-items-center rounded-md bg-obsidian text-chalk">
               <ServiceIcon slug={service.slug} className="h-6 w-6" />
             </span>
             <div className="mt-6">
@@ -95,7 +91,7 @@ export default async function ServiceDetailPage(props: PageProps<"/services/[slu
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <Reveal className="rounded-2xl border border-line bg-mist p-6">
+            <Reveal className="rounded-lg border border-line bg-mist p-6">
               <h2 className="kicker text-ink-faint">Service areas</h2>
               <ul className="mt-4 text-sm text-ink-soft">
                 {service.serviceAreas.map((a) => (
@@ -144,7 +140,7 @@ export default async function ServiceDetailPage(props: PageProps<"/services/[slu
           {related.map((s) => (
             <StaggerItem key={s.slug}>
               <Card href={`/services/${s.slug}`} className="p-6">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-obsidian text-chalk transition-colors group-hover:bg-accent">
+                <span className="grid h-10 w-10 place-items-center rounded-md bg-obsidian text-chalk transition-colors group-hover:bg-accent">
                   <ServiceIcon slug={s.slug} className="h-4 w-4" />
                 </span>
                 <h3 className="mt-4 text-base font-semibold text-ink">{s.title}</h3>

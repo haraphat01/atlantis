@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Check, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
@@ -102,41 +103,56 @@ export function PageHero({
   title,
   lead,
   children,
+  image,
 }: {
   eyebrow?: string;
   title: string;
   lead?: string;
   children?: ReactNode;
+  /** Optional photograph shown beside the copy on larger screens. */
+  image?: { src: string; alt: string };
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-mist">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-ledger mask-fade-b opacity-70" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 -top-40 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,104,240,0.12),transparent_70%)] blur-2xl"
-      />
       <Container className="relative py-20 sm:py-28 lg:py-32">
-        <div className="max-w-3xl">
-          {eyebrow && (
-            <Reveal>
-              <Kicker>{eyebrow}</Kicker>
+        <div className={cn("grid gap-12 lg:items-center", image ? "lg:grid-cols-[1.1fr_0.9fr]" : "")}>
+          <div className="max-w-3xl">
+            {eyebrow && (
+              <Reveal>
+                <Kicker>{eyebrow}</Kicker>
+              </Reveal>
+            )}
+            <Reveal
+              delay={0.05}
+              as="h1"
+              className="mt-6 text-[2.4rem] leading-[1.06] sm:text-5xl lg:text-[3.4rem]"
+            >
+              {title}
             </Reveal>
-          )}
-          <Reveal
-            delay={0.05}
-            as="h1"
-            className="mt-6 text-[2.4rem] leading-[1.06] sm:text-5xl lg:text-[3.4rem]"
-          >
-            {title}
-          </Reveal>
-          {lead && (
-            <Reveal delay={0.12}>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-ink-soft">{lead}</p>
-            </Reveal>
-          )}
-          {children && (
-            <Reveal delay={0.18} className="mt-10">
-              {children}
+            {lead && (
+              <Reveal delay={0.12}>
+                <p className="mt-7 max-w-2xl text-lg leading-8 text-ink-soft">{lead}</p>
+              </Reveal>
+            )}
+            {children && (
+              <Reveal delay={0.18} className="mt-10">
+                {children}
+              </Reveal>
+            )}
+          </div>
+          {image && (
+            <Reveal
+              delay={0.1}
+              className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-[0_24px_60px_-30px_rgba(20,33,46,0.35)] ring-1 ring-ink/10 lg:aspect-[5/4]"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
             </Reveal>
           )}
         </div>
@@ -241,18 +257,20 @@ export function CtaBand({
   primaryHref?: string;
 }) {
   return (
-    <section className="px-5 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <Reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-[1.75rem] bg-obsidian px-6 py-14 sm:px-14 sm:py-20">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint mask-radial opacity-70" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-24 -top-28 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(56,214,230,0.22),transparent_62%)] blur-2xl"
+    <section className="relative overflow-hidden border-t border-obsidian-line bg-obsidian">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/about-conversation.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-[0.14]"
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(47,104,240,0.28),transparent_65%)] blur-2xl"
-        />
-        <div className="relative flex flex-col items-start gap-9 lg:flex-row lg:items-center lg:justify-between">
+        <div className="absolute inset-0 bg-obsidian/70" />
+        <div className="absolute inset-0 bg-blueprint opacity-30" />
+      </div>
+      <Container className="relative py-16 sm:py-24">
+        <Reveal className="flex flex-col items-start gap-9 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Kicker onDark>Request a consultation</Kicker>
             <h2 className="mt-5 text-3xl text-chalk sm:text-[2.5rem] sm:leading-[1.1]">{title}</h2>
@@ -266,8 +284,8 @@ export function CtaBand({
               How we work
             </ButtonLink>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </Container>
     </section>
   );
 }
@@ -294,14 +312,14 @@ export function CheckList({
             onDark ? "text-chalk-soft" : "text-ink-soft",
           )}
         >
-          <span
+          <Check
             className={cn(
-              "mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-full",
-              onDark ? "bg-signal/15 text-signal" : "bg-accent/10 text-accent-ink",
+              "mt-1 h-3.5 w-3.5 flex-shrink-0",
+              onDark ? "text-signal" : "text-accent-ink",
             )}
-          >
-            <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
-          </span>
+            strokeWidth={2.5}
+            aria-hidden
+          />
           <span>{item}</span>
         </StaggerItem>
       ))}
@@ -326,14 +344,10 @@ export function Card({
     <Link
       href={href}
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-line-strong hover:bg-[#fdfcfa]",
+        "group relative flex h-full flex-col rounded-lg border border-line bg-surface p-6 transition-colors duration-200 hover:border-accent/40",
         className,
       )}
     >
-      <span
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"
-      />
       {children}
     </Link>
   );

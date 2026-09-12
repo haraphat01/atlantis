@@ -21,6 +21,10 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Advisory, assessment, governance, assurance, and program development"
         lead="Our portfolio is organized into seven categories. Each explains the business problem it answers, what we do, the service areas within it, and the outcomes you can expect. Most engagements begin with a short discovery conversation and scope definition."
+        image={{
+          src: "/images/services-workstation.jpg",
+          alt: "Advisors reviewing findings together on a laptop",
+        }}
       >
         <ButtonLink href={primaryCta.href} size="lg" withArrow>
           {primaryCta.label}
@@ -33,14 +37,10 @@ export default function ServicesPage() {
             <StaggerItem key={s.slug}>
               <Link
                 href={`/services/${s.slug}`}
-                className="group relative grid gap-6 overflow-hidden rounded-2xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-line-strong hover:bg-[#fdfcfa] sm:grid-cols-[auto_1fr] sm:p-8"
+                className="group relative grid gap-6 rounded-lg border border-line bg-surface p-6 transition-colors duration-200 hover:border-accent/40 sm:grid-cols-[auto_1fr] sm:p-8"
               >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"
-                />
                 <div className="flex items-start gap-4">
-                  <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-obsidian text-chalk transition-colors group-hover:bg-accent">
+                  <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-md bg-obsidian text-chalk transition-colors group-hover:bg-accent">
                     <ServiceIcon slug={s.slug} />
                   </span>
                   <span className="font-serif text-2xl text-ink-faint sm:hidden">

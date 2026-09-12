@@ -23,6 +23,10 @@ export default function AboutPage() {
         eyebrow="About"
         title="An independent advisor, accountable to one interest — the client's best interests"
         lead={company.descriptionShort}
+        image={{
+          src: "/images/about-conversation.jpg",
+          alt: "Two advisors in discussion over a tablet and notes",
+        }}
       />
 
       <Section index="01">
@@ -51,13 +55,13 @@ export default function AboutPage() {
 
       <Section tone="mist" index="02" divide>
         <div className="grid gap-5 md:grid-cols-2">
-          <Reveal className="rounded-2xl border border-line bg-surface p-8 sm:p-10">
+          <Reveal className="rounded-lg border border-line bg-surface p-8 sm:p-10">
             <Kicker>Mission</Kicker>
             <p className="mt-5 font-serif text-xl leading-8 text-ink">{mission}</p>
           </Reveal>
           <Reveal
             delay={0.1}
-            className="rounded-2xl border border-line bg-surface p-8 sm:p-10"
+            className="rounded-lg border border-line bg-surface p-8 sm:p-10"
           >
             <Kicker>Vision</Kicker>
             <p className="mt-5 font-serif text-xl leading-8 text-ink">{vision}</p>

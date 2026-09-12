@@ -90,7 +90,7 @@ export default function HomePage() {
             <StaggerItem key={s.slug}>
               <Card href={`/services/${s.slug}`} className="p-6">
                 <div className="flex items-center justify-between">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-obsidian text-chalk transition-colors group-hover:bg-accent">
+                  <span className="grid h-11 w-11 place-items-center rounded-md bg-obsidian text-chalk transition-colors group-hover:bg-accent">
                     <ServiceIcon slug={s.slug} />
                   </span>
                   <span className="kicker text-ink-faint">
@@ -204,13 +204,13 @@ export default function HomePage() {
       {/* Mission / Vision */}
       <Section index="07">
         <div className="grid gap-5 md:grid-cols-2">
-          <Reveal className="rounded-2xl border border-line bg-surface p-8 sm:p-10">
+          <Reveal className="rounded-lg border border-line bg-surface p-8 sm:p-10">
             <Kicker>Our mission</Kicker>
             <p className="mt-5 font-serif text-xl leading-8 text-ink">{mission}</p>
           </Reveal>
           <Reveal
             delay={0.1}
-            className="rounded-2xl border border-line bg-surface p-8 sm:p-10"
+            className="rounded-lg border border-line bg-surface p-8 sm:p-10"
           >
             <Kicker>Our vision</Kicker>
             <p className="mt-5 font-serif text-xl leading-8 text-ink">{vision}</p>

@@ -1,8 +1,9 @@
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button";
-import { HeroScene } from "@/components/hero-scene";
+import { Kicker } from "@/components/primitives";
 import { company, primaryCta } from "@/lib/site";
 
 const headline = ["Understand risk.", "Prove controls.", "Build resilience."];
@@ -16,22 +17,26 @@ const marks = [
 export function Hero() {
   return (
     <section className="relative -mt-16 overflow-hidden bg-obsidian pt-16 text-chalk">
-      {/* Interactive scan scene — Canada + Nigeria map, sentry with binoculars */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-blueprint opacity-40 mask-radial" />
-        <div className="absolute -left-[10%] top-[6%] h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(47,104,240,0.2),transparent_62%)] blur-2xl animate-drift" />
-        <HeroScene />
-        {/* Scrim: keep the left column readable, let the sentry show at right */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-obsidian)_0%,var(--color-obsidian)_32%,color-mix(in_oklab,var(--color-obsidian)_35%,transparent)_58%,transparent_78%)]" />
+        <Image
+          src="/images/hero-review.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[80%_35%]"
+        />
+        <div className="absolute inset-0 bg-blueprint opacity-20 mix-blend-overlay" />
+        {/* Scrim: keep the left column readable, let the photograph show at right */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-obsidian)_0%,var(--color-obsidian)_36%,color-mix(in_oklab,var(--color-obsidian)_62%,transparent)_60%,color-mix(in_oklab,var(--color-obsidian)_28%,transparent)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-obsidian" />
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-obsidian/80 to-transparent" />
       </div>
 
       <Container className="relative">
         <div className="flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20">
-          <div className="rise inline-flex w-fit items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3.5 py-1.5 backdrop-blur-sm">
-            <ShieldCheck className="h-3.5 w-3.5 text-signal" aria-hidden />
-            <span className="kicker text-chalk-soft">Independent B2B cybersecurity advisory</span>
+          <div className="rise">
+            <Kicker onDark>Independent B2B cybersecurity advisory</Kicker>
           </div>
 
           <h1 className="mt-8 max-w-4xl text-[2.9rem] leading-[1.02] tracking-[-0.02em] text-chalk sm:text-[4.25rem] lg:text-[5rem]">
@@ -41,7 +46,7 @@ export function Hero() {
                 className="rise block"
                 style={{ animationDelay: `${0.08 + i * 0.09}s` }}
               >
-                {i === 2 ? <span className="text-gradient-dark italic">{line}</span> : line}
+                {i === 2 ? <span className="italic text-signal">{line}</span> : line}
               </span>
             ))}
           </h1>
@@ -75,11 +80,11 @@ export function Hero() {
           </div>
 
           <dl
-            className="rise mt-16 grid max-w-3xl gap-px overflow-hidden rounded-xl border border-white/10 bg-white/[0.08] sm:grid-cols-3"
+            className="rise mt-16 grid max-w-3xl gap-px overflow-hidden border border-obsidian-line bg-obsidian-line sm:grid-cols-3"
             style={{ animationDelay: "0.66s" }}
           >
             {marks.map((m) => (
-              <div key={m.k} className="bg-obsidian/80 p-5 backdrop-blur-sm">
+              <div key={m.k} className="bg-obsidian p-5">
                 <span className="kicker text-signal">{m.k}</span>
                 <dt className="mt-2 text-sm font-semibold text-chalk">{m.label}</dt>
                 <dd className="mt-1 text-[0.8125rem] leading-5 text-chalk-faint">{m.note}</dd>

@@ -154,12 +154,12 @@ export function SiteHeader() {
               )}
             >
               <div
-                className="overflow-hidden rounded-2xl border border-line bg-surface p-2 shadow-[0_24px_60px_-20px_rgba(20,33,46,0.28)]"
+                className="overflow-hidden rounded-lg border border-line bg-surface p-2 shadow-[0_16px_40px_-20px_rgba(20,33,46,0.35)]"
                 onClick={closeMenus}
               >
                 <Link
                   href="/services"
-                  className="flex items-center justify-between rounded-xl bg-mist px-3.5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-line/60"
+                  className="flex items-center justify-between rounded-md bg-mist px-3.5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-line/60"
                 >
                   All services overview
                   <ArrowRight className="h-4 w-4 text-accent-ink" aria-hidden />
@@ -169,7 +169,7 @@ export function SiteHeader() {
                     <Link
                       key={s.slug}
                       href={`/services/${s.slug}`}
-                      className="rounded-xl px-3.5 py-2.5 text-sm text-ink-soft transition-colors hover:bg-mist hover:text-ink"
+                      className="rounded-md px-3.5 py-2.5 text-sm text-ink-soft transition-colors hover:bg-mist hover:text-ink"
                     >
                       {s.title}
                     </Link>

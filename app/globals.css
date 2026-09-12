@@ -3,9 +3,10 @@
 /*
   Atlantic Fortis — editorial, precise, high-trust.
 
-  A warm paper canvas with deep "obsidian" bookend sections (hero, CTA, footer).
-  One decisive accent (cobalt) with a cyan signal reserved for dark surfaces.
-  Display type is a soft modern serif; labels are monospace for a ledger feel.
+  A warm paper canvas with deep navy bookend sections (hero, CTA, footer).
+  One decisive accent — bronze / gold — instead of the blue every competitor
+  uses. Display type is a soft modern serif; labels are monospace for a
+  ledger feel.
 */
 
 @theme {
@@ -19,37 +20,36 @@
     Consolas, monospace;
 
   /* Neutrals — warm paper */
-  --color-paper: #f6f5f2;
+  --color-paper: #faf8f3;
   --color-surface: #ffffff;
-  --color-mist: #efece5;
-  --color-line: #e3ddd2;
-  --color-line-strong: #cec6b6;
+  --color-mist: #f1ecdf;
+  --color-line: #e5dcc6;
+  --color-line-strong: #d1c3a0;
 
-  /* Ink — cool near-black navy */
+  /* Ink — charcoal navy */
   --color-ink: #14212e;
   --color-ink-soft: #4c5866;
   --color-ink-faint: #8b95a1;
 
   /* Obsidian — dark sections */
-  --color-obsidian: #0a1622;
+  --color-obsidian: #0b1520;
   --color-obsidian-raised: #10202f;
   --color-obsidian-line: rgba(255, 255, 255, 0.1);
 
-  /* Accent — cobalt, plus a cyan signal for dark surfaces */
-  --color-accent: #2f68f0;
-  --color-accent-ink: #2352c9;
-  --color-accent-soft: #e9f0ff;
-  --color-signal: #38d6e6;
+  /* Accent — bronze / gold, plus a lighter gold signal for dark surfaces */
+  --color-accent: #b8923f;
+  --color-accent-ink: #8f6e28;
+  --color-accent-soft: #f5edd9;
+  --color-signal: #d9b872;
 
   /* On-dark text */
-  --color-chalk: #eef2f6;
-  --color-chalk-soft: #a9b6c4;
-  --color-chalk-faint: #6d7d8e;
+  --color-chalk: #e8dec8;
+  --color-chalk-soft: #b2a88f;
+  --color-chalk-faint: #756c56;
 
-  --radius: 0.75rem;
+  --radius: 0.375rem;
 
   --animate-marquee: marquee 40s linear infinite;
-  --animate-drift: drift 20s ease-in-out infinite alternate;
 }
 
 @keyframes marquee {
@@ -61,15 +61,6 @@
   }
 }
 
-@keyframes drift {
-  from {
-    transform: translate3d(-3%, -2%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(4%, 3%, 0) scale(1.08);
-  }
-}
-
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -78,19 +69,6 @@
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-/* Hero scene — the beam, reticle, parallax, boot and detection pings are driven
-   in JS / SMIL. Only the link-pulse opacity lives here. */
-@keyframes hs-fade {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  15%,
-  85% {
-    opacity: 0.9;
   }
 }
 
@@ -167,30 +145,6 @@
     mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
   }
 
-  .mask-radial {
-    -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 42%, #000 35%, transparent 100%);
-    mask-image: radial-gradient(ellipse 75% 60% at 50% 42%, #000 35%, transparent 100%);
-  }
-
-  .text-gradient {
-    background: linear-gradient(
-      104deg,
-      var(--color-ink) 0%,
-      var(--color-accent-ink) 68%,
-      var(--color-accent) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .text-gradient-dark {
-    background: linear-gradient(104deg, #ffffff 0%, #cadcf0 55%, var(--color-signal) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
   .animate-marquee {
     animation: var(--animate-marquee);
   }
@@ -203,23 +157,6 @@
 
   .reveal {
     animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  /* Hero scene */
-  .hs-fade {
-    animation: hs-fade 5s linear infinite;
-  }
-  .hs-label {
-    font-family: var(--font-mono), ui-monospace, monospace;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-  }
-  .hs-code {
-    font-family: var(--font-mono), ui-monospace, monospace;
-    font-size: 9.5px;
-    letter-spacing: 0.16em;
-    opacity: 0.75;
   }
 
   .stagger > * {
@@ -272,10 +209,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .hs-fade {
-    animation: none;
-    opacity: 0;
   }
 }

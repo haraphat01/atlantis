@@ -86,7 +86,7 @@ export const clientProblems: { problem: string; direction: string; href: string 
   },
   {
     problem:
-      "A customer, auditor, insurer, or regulator is asking us to demonstrate stronger security.",
+      "A customer, auditor, or regulator is asking us to demonstrate stronger security.",
     direction: "Compliance readiness, control assurance, governance, and risk assessment.",
     href: "/services/regulatory-framework-compliance",
   },
