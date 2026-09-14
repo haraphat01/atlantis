@@ -11,16 +11,23 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-obsidian-line bg-obsidian text-chalk-soft">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-blueprint opacity-40" />
+    <footer className="relative overflow-hidden bg-dark text-chalk-soft">
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent to-teal"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-accent/10 blur-[110px]"
+      />
       <Container className="relative py-20">
         <div className="flex flex-col gap-10 border-b border-white/10 pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-md">
             <Link href="/" className="flex items-center gap-2.5 text-chalk">
               <Logo className="h-8 w-8" />
-              <span className="font-serif text-lg font-medium">{company.name}</span>
+              <span className="text-lg font-semibold">{company.name}</span>
             </Link>
-            <p className="mt-5 font-serif text-3xl leading-tight text-chalk sm:text-[2.25rem]">
+            <p className="mt-5 max-w-sm text-2xl leading-tight tracking-tight text-chalk sm:text-3xl">
               Let&apos;s talk about your cyber risk.
             </p>
           </div>
@@ -30,7 +37,7 @@ export function SiteFooter() {
             </ButtonLink>
             <a
               href={`mailto:${company.email}`}
-              className="inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-3.5 text-sm font-medium text-chalk transition-colors hover:border-white/45 hover:bg-white/[0.06]"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3.5 text-sm font-medium text-chalk transition-colors hover:border-white/45 hover:bg-white/[0.06]"
             >
               <Mail className="h-4 w-4" aria-hidden />
               {company.email}
@@ -44,7 +51,7 @@ export function SiteFooter() {
           </p>
 
           <nav aria-label="Services">
-            <h2 className="kicker text-chalk-faint">Services</h2>
+            <h2 className="mark-label text-chalk-faint">Services</h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
@@ -60,7 +67,7 @@ export function SiteFooter() {
           </nav>
 
           <nav aria-label="Industries">
-            <h2 className="kicker text-chalk-faint">Industries</h2>
+            <h2 className="mark-label text-chalk-faint">Industries</h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               {industries.map((i) => (
                 <li key={i.slug}>
@@ -76,7 +83,7 @@ export function SiteFooter() {
           </nav>
 
           <nav aria-label="Company">
-            <h2 className="kicker text-chalk-faint">Company</h2>
+            <h2 className="mark-label text-chalk-faint">Company</h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               {primaryNav
                 .filter((l) => l.href !== "/services" && l.href !== "/industries")

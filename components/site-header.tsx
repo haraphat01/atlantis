@@ -18,9 +18,6 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
 
-  const onHome = pathname === "/";
-  const overHero = onHome && !scrolled && !mobileOpen;
-
   const closeMenus = useCallback(() => {
     setMobileOpen(false);
     setServicesOpen(false);
@@ -69,17 +66,11 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  const linkColor = overHero
-    ? "text-chalk-soft hover:text-chalk hover:bg-white/[0.08]"
-    : "text-ink-soft hover:text-ink hover:bg-ink/[0.05]";
-
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        overHero
-          ? "border-b border-transparent bg-transparent"
-          : "border-b border-line bg-paper/85 backdrop-blur-xl",
+        "fixed inset-x-0 top-0 z-50 transition-shadow duration-300 bg-paper/85 backdrop-blur-xl",
+        scrolled ? "shadow-soft" : "border-b border-line",
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
@@ -89,15 +80,8 @@ export function SiteHeader() {
           className="flex items-center gap-2.5"
           aria-label={`${company.name} home`}
         >
-          <Logo className={cn("h-8 w-8", overHero ? "text-chalk" : "text-ink")} />
-          <span
-            className={cn(
-              "font-serif text-lg font-medium tracking-tight transition-colors",
-              overHero ? "text-chalk" : "text-ink",
-            )}
-          >
-            {company.name}
-          </span>
+          <Logo className="h-8 w-8 text-accent" />
+          <span className="text-lg font-bold tracking-tight text-ink">{company.name}</span>
         </Link>
 
         {/* Desktop nav */}
@@ -116,10 +100,8 @@ export function SiteHeader() {
             <Link
               href="/services"
               className={cn(
-                "flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
-                linkColor,
-                (servicesOpen || isActive("/services")) &&
-                  (overHero ? "text-chalk" : "text-ink"),
+                "flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-ink/[0.05] hover:text-ink",
+                (servicesOpen || isActive("/services")) && "bg-accent-soft text-accent-ink hover:bg-accent-soft",
               )}
               aria-haspopup="true"
               aria-expanded={servicesOpen}
@@ -135,7 +117,6 @@ export function SiteHeader() {
                 aria-hidden
               />
             </Link>
-            {/* Explicit toggle for keyboard / touch users. */}
             <button
               type="button"
               className="sr-only"
@@ -143,8 +124,6 @@ export function SiteHeader() {
               onClick={() => setServicesOpen((v) => !v)}
             />
 
-            {/* Dropdown — always mounted, toggled with classes so it never
-                depends on an animation library to become visible. */}
             <div
               className={cn(
                 "absolute left-1/2 top-full w-[33rem] -translate-x-1/2 pt-3 transition-[opacity,transform] duration-150 ease-out",
@@ -154,22 +133,22 @@ export function SiteHeader() {
               )}
             >
               <div
-                className="overflow-hidden rounded-lg border border-line bg-surface p-2 shadow-[0_16px_40px_-20px_rgba(20,33,46,0.35)]"
+                className="overflow-hidden rounded-2xl border border-line bg-surface p-2 shadow-lift"
                 onClick={closeMenus}
               >
                 <Link
                   href="/services"
-                  className="flex items-center justify-between rounded-md bg-mist px-3.5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-line/60"
+                  className="flex items-center justify-between rounded-xl bg-mist px-3.5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-accent-soft"
                 >
                   All services overview
-                  <ArrowRight className="h-4 w-4 text-accent-ink" aria-hidden />
+                  <ArrowRight className="h-4 w-4 text-accent" aria-hidden />
                 </Link>
                 <div className="mt-1 grid grid-cols-2 gap-0.5">
                   {services.map((s) => (
                     <Link
                       key={s.slug}
                       href={`/services/${s.slug}`}
-                      className="rounded-md px-3.5 py-2.5 text-sm text-ink-soft transition-colors hover:bg-mist hover:text-ink"
+                      className="rounded-xl px-3.5 py-2.5 text-sm text-ink-soft transition-colors hover:bg-mist hover:text-ink"
                     >
                       {s.title}
                     </Link>
@@ -187,42 +166,24 @@ export function SiteHeader() {
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
-                  linkColor,
-                  isActive(link.href) && (overHero ? "text-chalk" : "text-ink"),
+                  "relative rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-ink/[0.05] hover:text-ink",
+                  isActive(link.href) && "bg-accent-soft text-accent-ink hover:bg-accent-soft",
                 )}
               >
                 {link.label}
-                {isActive(link.href) && (
-                  <span
-                    aria-hidden
-                    className={cn(
-                      "absolute inset-x-3.5 -bottom-px h-0.5 rounded-full",
-                      overHero ? "bg-chalk" : "bg-accent",
-                    )}
-                  />
-                )}
               </Link>
             ))}
         </nav>
 
         <div className="hidden lg:block">
-          <ButtonLink
-            href={primaryCta.href}
-            size="sm"
-            variant={overHero ? "onDark" : "primary"}
-            withArrow
-          >
+          <ButtonLink href={primaryCta.href} size="sm" withArrow>
             {primaryCta.label}
           </ButtonLink>
         </div>
 
         <button
           type="button"
-          className={cn(
-            "inline-flex items-center justify-center rounded-lg p-2 transition-colors lg:hidden",
-            overHero ? "text-chalk hover:bg-white/10" : "text-ink hover:bg-ink/5",
-          )}
+          className="inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-ink/5 lg:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           onClick={() => setMobileOpen((v) => !v)}
@@ -241,7 +202,7 @@ export function SiteHeader() {
             <nav className="flex flex-col gap-1" aria-label="Mobile" onClick={closeMenus}>
               <Link
                 href="/services"
-                className="rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-mist"
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-ink hover:bg-mist"
               >
                 Services overview
               </Link>
@@ -250,7 +211,7 @@ export function SiteHeader() {
                   <Link
                     key={s.slug}
                     href={`/services/${s.slug}`}
-                    className="rounded-lg px-3 py-1.5 text-sm text-ink-soft hover:bg-mist"
+                    className="rounded-xl px-3 py-1.5 text-sm text-ink-soft hover:bg-mist"
                   >
                     {s.title}
                   </Link>
@@ -262,7 +223,7 @@ export function SiteHeader() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="rounded-lg px-3 py-2 text-sm font-medium text-ink-soft hover:bg-mist"
+                    className="rounded-xl px-3 py-2 text-sm font-medium text-ink-soft hover:bg-mist"
                   >
                     {link.label}
                   </Link>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -17,33 +17,26 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-});
-
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.atlanticfortis.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${company.legalName} — Independent Cybersecurity Advisory`,
-    template: `%s — ${company.name}`,
+    default: `${company.legalName} | Independent Cybersecurity Advisory`,
+    template: `%s | ${company.name}`,
   },
   description: company.descriptionShort,
   applicationName: company.name,
   openGraph: {
     type: "website",
     siteName: company.legalName,
-    title: `${company.legalName} — Independent Cybersecurity Advisory`,
+    title: `${company.legalName} | Independent Cybersecurity Advisory`,
     description: company.descriptionShort,
     url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${company.legalName} — Independent Cybersecurity Advisory`,
+    title: `${company.legalName} | Independent Cybersecurity Advisory`,
     description: company.descriptionShort,
   },
   robots: { index: true, follow: true },
@@ -54,12 +47,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-obsidian focus:px-4 focus:py-2 focus:text-chalk"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-dark focus:px-4 focus:py-2 focus:text-chalk"
         >
           Skip to content
         </a>

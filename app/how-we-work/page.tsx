@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { PageHero, Section, SectionHeading, CtaBand } from "@/components/primitives";
+import { PageHero, Section, SectionHeading } from "@/components/primitives";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { engagementSteps, deliveryModel } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How We Work",
   description:
-    "A structured cybersecurity consulting engagement — from discovery and scoping through evidence gathering, assessment, validation, reporting, and ongoing advisory.",
+    "A structured cybersecurity consulting engagement, from discovery and scoping through evidence gathering, assessment, validation, reporting, and ongoing advisory.",
 };
 
 export default function HowWeWorkPage() {
@@ -18,7 +18,7 @@ export default function HowWeWorkPage() {
         lead="Engagements follow a consistent path. Most opportunities begin with a discovery conversation and scope definition before a final proposal is issued, so both sides are clear on outcomes, deliverables, and commercial model."
       />
 
-      <Section index="01">
+      <Section>
         <SectionHeading
           eyebrow="Engagement journey"
           title="Seven steps from business need to sustained improvement"
@@ -30,7 +30,7 @@ export default function HowWeWorkPage() {
               key={step.title}
               className="relative pb-12 pl-10 last:pb-0"
             >
-              <span className="absolute -left-[19px] top-0 grid h-9 w-9 place-items-center rounded-full border border-line bg-surface font-serif text-base font-medium text-accent-ink shadow-[0_2px_8px_rgba(20,33,46,0.06)]">
+              <span className="absolute -left-[19px] top-0 grid h-9 w-9 place-items-center rounded-full bg-accent-soft text-sm font-bold text-accent-ink">
                 {idx + 1}
               </span>
               <h3 className="text-lg text-ink">{step.title}</h3>
@@ -42,7 +42,7 @@ export default function HowWeWorkPage() {
         </Stagger>
       </Section>
 
-      <Section tone="mist" index="02" divide>
+      <Section tone="mist" divide>
         <SectionHeading
           eyebrow="Delivery model"
           title="Virtual-first, hybrid where it adds value"
@@ -53,8 +53,6 @@ export default function HowWeWorkPage() {
           </p>
         </Reveal>
       </Section>
-
-      <CtaBand />
     </>
   );
 }

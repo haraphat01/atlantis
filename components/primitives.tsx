@@ -1,15 +1,13 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Check, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { ButtonLink } from "@/components/button";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
-import { primaryCta } from "@/lib/site";
+import { GradientMesh } from "@/components/graphics";
 import { cn } from "@/lib/cn";
 
 /* -------------------------------------------------------------------------- */
-/*  Kicker — monospace label with a short accent rule                         */
+/*  Kicker — a small pill badge above a heading                              */
 /* -------------------------------------------------------------------------- */
 
 export function Kicker({
@@ -24,18 +22,11 @@ export function Kicker({
   return (
     <span
       className={cn(
-        "kicker inline-flex items-center gap-3",
-        onDark ? "text-signal" : "text-accent-ink",
+        "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold",
+        onDark ? "bg-white/10 text-signal" : "bg-accent-soft text-accent-ink",
         className,
       )}
     >
-      <span
-        aria-hidden
-        className={cn(
-          "h-px w-6",
-          onDark ? "bg-signal/70" : "bg-accent/60",
-        )}
-      />
       {children}
     </span>
   );
@@ -67,14 +58,14 @@ export function SectionHeading({
     <Reveal
       className={cn(
         "max-w-2xl",
-        align === "center" && "mx-auto text-center [&_.kicker]:justify-center",
+        align === "center" && "mx-auto text-center",
         className,
       )}
     >
       {eyebrow && <Kicker onDark={onDark}>{eyebrow}</Kicker>}
       <h2
         className={cn(
-          "mt-5 text-[1.75rem] leading-[1.12] sm:text-[2.35rem]",
+          "mt-4 text-[1.65rem] leading-[1.15] sm:text-[2.1rem]",
           onDark ? "text-chalk" : "text-ink",
         )}
       >
@@ -83,7 +74,7 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-5 text-[1.0625rem] leading-7",
+            "mt-4 text-[1.0625rem] leading-7",
             onDark ? "text-chalk-soft" : "text-ink-soft",
           )}
         >
@@ -95,7 +86,39 @@ export function SectionHeading({
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Interior page hero — light, editorial                                     */
+/*  Feature split — alternating illustration + copy row                      */
+/* -------------------------------------------------------------------------- */
+
+export function FeatureSplit({
+  kicker,
+  title,
+  body,
+  graphic,
+  reverse = false,
+  children,
+}: {
+  kicker: string;
+  title: string;
+  body: string;
+  graphic: ReactNode;
+  reverse?: boolean;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <Reveal className={reverse ? "lg:order-2" : "lg:order-1"}>{graphic}</Reveal>
+      <Reveal delay={0.08} className={reverse ? "lg:order-1" : "lg:order-2"}>
+        <Kicker>{kicker}</Kicker>
+        <h3 className="mt-4 text-2xl leading-tight text-ink sm:text-[1.75rem]">{title}</h3>
+        <p className="mt-4 max-w-md text-[1.0625rem] leading-7 text-ink-soft">{body}</p>
+        {children}
+      </Reveal>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Interior page hero — light, with a soft gradient and a small mark         */
 /* -------------------------------------------------------------------------- */
 
 export function PageHero({
@@ -103,56 +126,43 @@ export function PageHero({
   title,
   lead,
   children,
-  image,
+  graphic,
 }: {
   eyebrow?: string;
   title: string;
   lead?: string;
   children?: ReactNode;
-  /** Optional photograph shown beside the copy on larger screens. */
-  image?: { src: string; alt: string };
+  /** Optional small visual shown beside the copy on larger screens. */
+  graphic?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-mist">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-ledger mask-fade-b opacity-70" />
-      <Container className="relative py-20 sm:py-28 lg:py-32">
-        <div className={cn("grid gap-12 lg:items-center", image ? "lg:grid-cols-[1.1fr_0.9fr]" : "")}>
-          <div className="max-w-3xl">
+      <GradientMesh className="opacity-70" />
+      <Container className="relative py-16 sm:py-24">
+        <div className={cn("grid gap-12 lg:items-center", graphic ? "lg:grid-cols-[1.2fr_0.5fr]" : "")}>
+          <div className="max-w-2xl">
             {eyebrow && (
               <Reveal>
                 <Kicker>{eyebrow}</Kicker>
               </Reveal>
             )}
-            <Reveal
-              delay={0.05}
-              as="h1"
-              className="mt-6 text-[2.4rem] leading-[1.06] sm:text-5xl lg:text-[3.4rem]"
-            >
+            <Reveal delay={0.04} as="h1" className="mt-5 text-[2.15rem] leading-[1.08] sm:text-[2.75rem]">
               {title}
             </Reveal>
             {lead && (
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-2xl text-lg leading-8 text-ink-soft">{lead}</p>
+              <Reveal delay={0.1}>
+                <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">{lead}</p>
               </Reveal>
             )}
             {children && (
-              <Reveal delay={0.18} className="mt-10">
+              <Reveal delay={0.14} className="mt-9">
                 {children}
               </Reveal>
             )}
           </div>
-          {image && (
-            <Reveal
-              delay={0.1}
-              className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-[0_24px_60px_-30px_rgba(20,33,46,0.35)] ring-1 ring-ink/10 lg:aspect-[5/4]"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
+          {graphic && (
+            <Reveal delay={0.08} className="hidden justify-self-center lg:block">
+              {graphic}
             </Reveal>
           )}
         </div>
@@ -169,14 +179,11 @@ export function Section({
   children,
   className = "",
   tone = "paper",
-  index,
   divide = false,
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "paper" | "mist" | "obsidian";
-  /** Optional two-digit section marker shown top-right. */
-  index?: string;
+  tone?: "paper" | "mist" | "dark";
   /** Draw a top hairline. */
   divide?: boolean;
 }) {
@@ -185,31 +192,18 @@ export function Section({
       className={cn(
         "relative",
         tone === "mist" && "bg-mist",
-        tone === "obsidian" && "bg-obsidian text-chalk",
+        tone === "dark" && "bg-dark text-chalk",
         divide && "border-t border-line",
         className,
       )}
     >
-      <Container className="relative py-20 sm:py-28">
-        {index && (
-          <span
-            aria-hidden
-            className={cn(
-              "kicker absolute right-5 top-8 hidden sm:right-6 sm:block lg:right-8",
-              tone === "obsidian" ? "text-chalk-faint" : "text-ink-faint",
-            )}
-          >
-            {index}
-          </span>
-        )}
-        {children}
-      </Container>
+      <Container className="relative py-16 sm:py-24">{children}</Container>
     </section>
   );
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Arrow link — the repeated "Learn more →" affordance                       */
+/*  Arrow link — the repeated "Learn more" affordance                        */
 /* -------------------------------------------------------------------------- */
 
 export function ArrowLink({
@@ -228,7 +222,7 @@ export function ArrowLink({
     <Link
       href={href}
       className={cn(
-        "group/al inline-flex items-center gap-1.5 text-sm font-medium text-accent-ink transition-colors hover:text-accent",
+        "group/al inline-flex items-center gap-1.5 text-sm font-semibold text-accent-ink transition-colors hover:text-accent",
         className,
       )}
     >
@@ -238,55 +232,6 @@ export function ArrowLink({
         aria-hidden
       />
     </Link>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  CTA band — obsidian panel                                                 */
-/* -------------------------------------------------------------------------- */
-
-export function CtaBand({
-  title = "Start with the problem you're facing",
-  body = "Tell us what's prompting the review or what you're trying to achieve. We'll connect it to the right engagement, scope, and next step — no obligation.",
-  primaryLabel = primaryCta.label,
-  primaryHref = primaryCta.href,
-}: {
-  title?: string;
-  body?: string;
-  primaryLabel?: string;
-  primaryHref?: string;
-}) {
-  return (
-    <section className="relative overflow-hidden border-t border-obsidian-line bg-obsidian">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <Image
-          src="/images/about-conversation.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover opacity-[0.14]"
-        />
-        <div className="absolute inset-0 bg-obsidian/70" />
-        <div className="absolute inset-0 bg-blueprint opacity-30" />
-      </div>
-      <Container className="relative py-16 sm:py-24">
-        <Reveal className="flex flex-col items-start gap-9 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <Kicker onDark>Request a consultation</Kicker>
-            <h2 className="mt-5 text-3xl text-chalk sm:text-[2.5rem] sm:leading-[1.1]">{title}</h2>
-            <p className="mt-5 text-[1.0625rem] leading-7 text-chalk-soft">{body}</p>
-          </div>
-          <div className="flex flex-shrink-0 flex-wrap gap-3">
-            <ButtonLink href={primaryHref} size="lg" variant="onDark" withArrow>
-              {primaryLabel}
-            </ButtonLink>
-            <ButtonLink href="/how-we-work" size="lg" variant="onDarkGhost">
-              How we work
-            </ButtonLink>
-          </div>
-        </Reveal>
-      </Container>
-    </section>
   );
 }
 
@@ -302,24 +247,24 @@ export function CheckList({
   onDark?: boolean;
 }) {
   return (
-    <Stagger as="ul" className="space-y-3.5">
+    <Stagger as="ul" className="space-y-3">
       {items.map((item) => (
         <StaggerItem
           as="li"
           key={item}
           className={cn(
-            "flex gap-3 text-[0.9375rem] leading-6",
+            "flex items-center gap-3 text-[0.9375rem] leading-6",
             onDark ? "text-chalk-soft" : "text-ink-soft",
           )}
         >
-          <Check
+          <span
             className={cn(
-              "mt-1 h-3.5 w-3.5 flex-shrink-0",
-              onDark ? "text-signal" : "text-accent-ink",
+              "grid h-5 w-5 flex-shrink-0 place-items-center rounded-full",
+              onDark ? "bg-white/10 text-signal" : "bg-teal-soft text-teal",
             )}
-            strokeWidth={2.5}
-            aria-hidden
-          />
+          >
+            <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
+          </span>
           <span>{item}</span>
         </StaggerItem>
       ))}
@@ -328,7 +273,7 @@ export function CheckList({
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Card — hairline surface with a hover rule                                 */
+/*  Card — rounded surface with soft depth                                    */
 /* -------------------------------------------------------------------------- */
 
 export function Card({
@@ -344,7 +289,7 @@ export function Card({
     <Link
       href={href}
       className={cn(
-        "group relative flex h-full flex-col rounded-lg border border-line bg-surface p-6 transition-colors duration-200 hover:border-accent/40",
+        "group relative flex h-full flex-col rounded-2xl border border-line bg-surface p-6 shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-lift",
         className,
       )}
     >

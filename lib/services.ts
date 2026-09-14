@@ -16,11 +16,11 @@ export const services: Service[] = [
     slug: "cybersecurity-risk-advisory",
     title: "Cybersecurity Risk Advisory",
     summary:
-      "Gain a clear view of your cyber risks through maturity, threat, cloud, AI, and third-party assessments — turning complex findings into practical priorities.",
+      "Gain a clear view of your cyber risks through maturity, threat, cloud, AI, and third-party assessments, turning complex findings into practical priorities.",
     problem:
-      "You need to understand where you stand, what could affect the business, and what to address first — before a customer, regulator, or incident forces the question.",
+      "You need to understand where you stand, what could affect the business, and what to address first, before a customer, regulator, or incident forces the question.",
     whatWeDo:
-      "We help you identify, understand, prioritize, and manage the cybersecurity risks that could affect business objectives, technology, data, customers, or regulatory obligations. Findings are connected to business impact and management decisions, not left as a technical list.",
+      "We identify, prioritize, and help you manage the risks that could affect the business, connecting findings to impact and management decisions.",
     serviceAreas: [
       "Cybersecurity Maturity Assessment",
       "Cybersecurity Risk Assessment",
@@ -44,9 +44,9 @@ export const services: Service[] = [
     summary:
       "Build a strong foundation with clear security policies, defined responsibilities, privacy governance, and practical continuity and disaster recovery plans.",
     problem:
-      "You have some policies, but they are incomplete, outdated, or not actually followed — and it is not always clear who owns which decision.",
+      "You have some policies, but they are incomplete, outdated, or not actually followed, and it is not always clear who owns which decision.",
     whatWeDo:
-      "We translate risk, business requirements, and regulatory obligations into approved policies, standards, responsibilities, and repeatable operating practices. Governance here means clear ownership, decision rights, control expectations, exception processes, and review cycles — not just documents.",
+      "We translate risk and regulatory obligations into approved policies, clear ownership, and repeatable operating practices — not just documents.",
     serviceAreas: [
       "Security Policy Development",
       "Data Privacy Governance (PIPEDA, GDPR, HIPAA where applicable)",
@@ -70,7 +70,7 @@ export const services: Service[] = [
     problem:
       "You need to reduce exposure, detect and respond faster, and be confident you can recover when something goes wrong.",
     whatWeDo:
-      "We strengthen your ability to prevent, detect, respond to, recover from, and adapt to cybersecurity incidents and operational disruptions — with advice tied to operational outcomes such as reduced attack exposure, stronger detection and response, better access governance, and clearer security operations.",
+      "We strengthen your ability to prevent, detect, respond to, and recover from incidents, with advice tied to measurable operational outcomes.",
     serviceAreas: [
       "Cyber Threat Intelligence",
       "Cloud Security",
@@ -96,9 +96,9 @@ export const services: Service[] = [
     summary:
       "Navigate cybersecurity and privacy requirements with confidence. We help you prepare for and align with ISO, NIST, SOC 2, PCI DSS, PIPEDA, GDPR, and other frameworks.",
     problem:
-      "A framework, certification, or attestation is now a requirement to win or keep business — and you need to know your gaps before an external party looks.",
+      "A framework, certification, or attestation is now a requirement to win or keep business, and you need to know your gaps before an external party looks.",
     whatWeDo:
-      "We assess your current controls, identify gaps, prepare you for external assurance or certification activities, and improve alignment with the frameworks that apply to you. Atlantic Fortis supports assessment, readiness, implementation, advisory, and control improvement — we do not issue certifications where an accredited body or independent attestation provider is required.",
+      "We assess your controls, close the gaps, and prepare you for external assurance or certification. We do not issue certifications requiring an accredited or independent body.",
     serviceAreas: [
       "ISO/IEC 27001",
       "ISO 22301 Business Continuity",
@@ -127,9 +127,9 @@ export const services: Service[] = [
     summary:
       "Understand whether your technology controls are working as intended through independent IT General Controls reviews and risk-based internal audits.",
     problem:
-      "You — or your auditors, board, or customers — need independent evidence that IT controls are designed well and operating effectively.",
+      "You, or your auditors, board, or customers, need independent evidence that IT controls are designed well and operating effectively.",
     whatWeDo:
-      "We provide independent, evidence-based assessment of technology controls, governance, risk management, and control effectiveness. Typical areas include access management, change management, computer operations, backup and recovery, development controls, interfaces, key reports, and service organization controls.",
+      "We independently assess technology controls and governance — access, change management, backup and recovery, and more — with evidence behind every finding.",
     serviceAreas: ["IT General Controls Review", "IT Internal Audit"],
     outcomes: [
       "Independent view of control design and operating effectiveness",
@@ -146,7 +146,7 @@ export const services: Service[] = [
     problem:
       "You have run individual projects and written individual documents, but you do not yet have a sustainable, managed cybersecurity capability.",
     whatWeDo:
-      "We help you build lasting cybersecurity management capability rather than relying on one-time documents or isolated projects — establishing governance structures, management processes, a target operating model, prioritized initiatives, metrics, ownership, and an implementation roadmap.",
+      "We build lasting cybersecurity management capability — governance, a target operating model, metrics, and an implementation roadmap — rather than one-off documents.",
     serviceAreas: [
       "Information Security Management System Development",
       "AI Management System Development",
@@ -168,7 +168,7 @@ export const services: Service[] = [
     problem:
       "People are one of your largest sources of risk, and generic annual training is not changing behaviour.",
     whatWeDo:
-      "We reduce human-related cybersecurity risk and improve workforce security knowledge through measurable, role-relevant learning. Training is positioned around behaviour improvement and practical competence, and can be adapted for executives, technology teams, privileged users, finance teams, developers, and other higher-risk groups.",
+      "We reduce human risk through measurable, role-relevant training — adapted for executives, privileged users, finance, and other higher-risk groups.",
     serviceAreas: ["Phishing Simulation", "Targeted Role-Based Security Training"],
     outcomes: [
       "Baseline and trend data on phishing susceptibility",

@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button";
-import { Section, CtaBand, Kicker, CheckList } from "@/components/primitives";
+import { Section, Kicker, CheckList } from "@/components/primitives";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
-import { ServiceIcon } from "@/components/service-icon";
+import { ServiceIconChip } from "@/components/service-icon";
 import { industries, getIndustry } from "@/lib/industries";
 import { getService } from "@/lib/services";
 import { primaryCta } from "@/lib/site";
@@ -38,7 +38,6 @@ export default async function IndustryDetailPage(
   return (
     <>
       <section className="relative overflow-hidden border-b border-line bg-mist">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-ledger mask-fade-b opacity-70" />
         <Container className="relative py-16 sm:py-24">
           <nav
             className="flex items-center gap-1.5 text-sm text-ink-faint"
@@ -84,11 +83,9 @@ export default async function IndustryDetailPage(
                 <StaggerItem key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}
-                    className="group relative flex gap-4 rounded-lg border border-line bg-surface p-5 transition-colors duration-200 hover:border-accent/40"
+                    className="group relative flex gap-4 rounded-2xl border border-line bg-surface p-5 shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lift"
                   >
-                    <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-md bg-obsidian text-chalk transition-colors group-hover:bg-accent">
-                      <ServiceIcon slug={s.slug} className="h-4 w-4" />
-                    </span>
+                    <ServiceIconChip slug={s.slug} className="h-10 w-10 [&_svg]:h-4 [&_svg]:w-4" />
                     <div>
                       <h3 className="text-base font-semibold text-ink">{s.title}</h3>
                       <p className="mt-1 text-sm leading-6 text-ink-soft">{s.summary}</p>
@@ -119,7 +116,7 @@ export default async function IndustryDetailPage(
               <StaggerItem key={i.slug}>
                 <Link
                   href={`/industries/${i.slug}`}
-                  className="rounded-full border border-line-strong bg-surface px-4 py-2 text-sm text-ink-soft transition-colors hover:border-accent/50 hover:text-ink"
+                  className="rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink-soft shadow-soft transition-colors hover:border-accent/40 hover:text-ink"
                 >
                   {i.name}
                 </Link>
@@ -127,8 +124,6 @@ export default async function IndustryDetailPage(
             ))}
         </Stagger>
       </Section>
-
-      <CtaBand />
     </>
   );
 }

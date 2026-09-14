@@ -22,7 +22,7 @@ export async function submitConsultation(
 ): Promise<ConsultationState> {
   // Honeypot — bots fill hidden fields, humans don't.
   if ((formData.get("company_website") ?? "").toString().trim() !== "") {
-    return { status: "success", message: "Thank you — your request has been received." };
+    return { status: "success", message: "Thank you. Your request has been received." };
   }
 
   const { values, errors } = parseConsultation(formData);
@@ -40,11 +40,11 @@ export async function submitConsultation(
     ["Name", values.name],
     ["Organization", values.organization],
     ["Email", values.email],
-    ["Phone", values.phone || "—"],
-    ["Job title", values.jobTitle || "—"],
-    ["Organization size", values.orgSize || "—"],
-    ["Area of interest", values.interest || "—"],
-    ["Preferred contact", values.preferredContact || "—"],
+    ["Phone", values.phone || "Not provided"],
+    ["Job title", values.jobTitle || "Not provided"],
+    ["Organization size", values.orgSize || "Not provided"],
+    ["Area of interest", values.interest || "Not provided"],
+    ["Preferred contact", values.preferredContact || "Not provided"],
     ["Business email?", isLikelyFreeEmail(values.email) ? "No (personal domain)" : "Yes"],
   ];
 
@@ -84,12 +84,12 @@ export async function submitConsultation(
     return {
       status: "success",
       message:
-        "Thank you — your request has been received. An advisor will be in touch shortly.",
+        "Thank you. Your request has been received. An advisor will be in touch shortly.",
     };
   }
 
   const result = await sendConsultationEmail({
-    subject: `Consultation request — ${values.organization}`,
+    subject: `Consultation request: ${values.organization}`,
     text,
     html,
     replyTo: values.email,
@@ -108,6 +108,6 @@ export async function submitConsultation(
   return {
     status: "success",
     message:
-      "Thank you — your request has been received. An advisor will be in touch shortly.",
+      "Thank you. Your request has been received. An advisor will be in touch shortly.",
   };
 }

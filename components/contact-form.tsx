@@ -17,7 +17,7 @@ const initialState: ConsultationState = { status: "idle", message: "" };
 
 function fieldClasses(hasError?: boolean) {
   return cn(
-    "mt-1.5 block w-full rounded-md border bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] placeholder:text-ink-faint",
+    "mt-1.5 block w-full rounded-xl border bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] placeholder:text-ink-faint",
     "focus:border-accent focus:ring-4 focus:ring-accent/12",
     hasError ? "border-red-400" : "border-line-strong",
   );
@@ -68,7 +68,7 @@ export function ContactForm({ defaultInterest }: { defaultInterest?: string }) {
 
   if (state.status === "success") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-lg border border-accent/25 bg-accent-soft p-10 text-center">
+      <div className="flex flex-col items-center gap-4 rounded-3xl border border-accent/25 bg-accent-soft p-10 text-center">
         <span className="grid h-12 w-12 place-items-center rounded-full bg-accent/15 text-accent-ink">
           <CheckCircle2 className="h-6 w-6" aria-hidden />
         </span>
@@ -83,7 +83,7 @@ export function ContactForm({ defaultInterest }: { defaultInterest?: string }) {
       {state.status === "error" && state.message && (
         <div
           role="alert"
-          className="flex items-start gap-2.5 rounded-md border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"
+          className="flex items-start gap-2.5 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" aria-hidden />
           {state.message}

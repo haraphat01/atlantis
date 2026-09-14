@@ -7,14 +7,14 @@ type Variant = "primary" | "secondary" | "ghost" | "onDark" | "onDarkGhost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "group/btn relative inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-tight transition-[background-color,color,border-color] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+  "group/btn relative inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-[background-color,color,border-color,box-shadow,transform] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-accent text-white hover:bg-accent-ink",
+  primary: "bg-accent text-white shadow-lift hover:bg-accent-ink hover:-translate-y-0.5",
   secondary:
-    "border border-line-strong bg-surface text-ink hover:border-ink/30 hover:bg-mist",
+    "border border-line-strong bg-surface text-ink hover:border-ink/20 hover:bg-mist",
   ghost: "text-ink hover:bg-ink/[0.06]",
-  onDark: "bg-chalk text-obsidian hover:bg-white",
+  onDark: "bg-white text-ink shadow-lift hover:bg-chalk hover:-translate-y-0.5",
   onDarkGhost:
     "border border-white/20 text-chalk hover:border-white/45 hover:bg-white/[0.06]",
 };

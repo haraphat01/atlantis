@@ -6,19 +6,19 @@ export const company = {
   name: "Atlantic Fortis",
   tagline: "Independent cybersecurity advisory",
   descriptionShort:
-    "Atlantic Fortis is an independent B2B cybersecurity advisory firm. We help organizations understand cyber risk, strengthen governance and controls, meet regulatory and assurance requirements, improve operational resilience, and build sustainable security programs.",
+    "Atlantic Fortis is an independent B2B cybersecurity advisory firm. We help organizations understand risk, strengthen governance, meet regulatory requirements, and build resilience.",
   email: "info@atlanticfortis.com",
   regions:
     "Serving clients across North America and Sub-Saharan Africa, with a virtual-first delivery model.",
   canadaFocus:
-    "Initial focus on Canada — Ontario, Alberta, and British Columbia — including the Greater Toronto Area, Ottawa, Kitchener–Waterloo–Hamilton, Calgary, Edmonton, and Vancouver.",
+    "Initial focus on Canada, in Ontario, Alberta, and British Columbia, including the Greater Toronto Area, Ottawa, Kitchener-Waterloo-Hamilton, Calgary, Edmonton, and Vancouver.",
 } as const;
 
 export const vision =
-  "A future where every organization's data, systems and people are secure, resilient, and ready for future threats.";
+  "A future where every organization's data, systems, and people are secure and ready for what's next.";
 
 export const mission =
-  "We help organizations strengthen their security posture, manage cyber risk, and build lasting resilience through clear, practical guidance grounded in trusted security best practices.";
+  "We help organizations manage cyber risk and build lasting resilience through clear, practical, evidence-based guidance.";
 
 export type NavLink = { label: string; href: string };
 
@@ -47,33 +47,27 @@ export const supportingCtas: NavLink[] = [
 export const differentiators: { title: string; description: string }[] = [
   {
     title: "Genuinely independent",
-    description:
-      "We do not sell hardware, resell software, or run a help desk. No recommendation we make is influenced by a product we are trying to sell.",
+    description: "No hardware, software, or help desk to sell — advice answers to the client only.",
   },
   {
     title: "Business and risk led",
-    description:
-      "We connect technical findings to business impact, regulatory exposure, operational risk, and the decisions your management team has to make.",
+    description: "Findings connect to business impact and the decisions management actually has to make.",
   },
   {
     title: "Broad assurance coverage",
-    description:
-      "Strong depth across risk, governance, compliance, IT audit, resilience, and security program development — not a single narrow speciality.",
+    description: "Depth across risk, governance, compliance, IT audit, and resilience, not one narrow speciality.",
   },
   {
     title: "Flexible engagement models",
-    description:
-      "Fixed-scope projects, recurring advisory retainers, time-based consulting, or broader program engagements — matched to your needs.",
+    description: "Fixed-scope projects, retainers, or full program engagements, matched to your needs.",
   },
   {
     title: "Evidence-based delivery",
-    description:
-      "Conclusions are supported by documents, interviews, walkthroughs, and testing — with appropriate quality review and clear accountability.",
+    description: "Conclusions are backed by documents, interviews, and testing, with clear accountability.",
   },
   {
     title: "Practical and prioritized",
-    description:
-      "Recommendations are built to support prioritization, remediation, implementation, and management decision-making.",
+    description: "Recommendations built for prioritization, remediation, and management decision-making.",
   },
 ];
 
@@ -137,43 +131,36 @@ export const clientProblems: { problem: string; direction: string; href: string 
 export const engagementSteps: { title: string; description: string }[] = [
   {
     title: "Understand the need",
-    description:
-      "We start with your business objective, cybersecurity concern, regulatory requirement, timeline, internal capability, and desired outcome.",
+    description: "Your objective, concern, regulatory driver, timeline, and desired outcome.",
   },
   {
     title: "Define scope and approach",
-    description:
-      "We agree the appropriate service, scope boundaries, stakeholders, criteria, deliverables, assumptions, timeline, and commercial model before a final proposal is issued.",
+    description: "Service, boundaries, stakeholders, deliverables, and commercial model — agreed before proposal.",
   },
   {
     title: "Gather evidence and context",
-    description:
-      "Depending on the engagement, we review documents, conduct interviews and walkthroughs, evaluate systems or controls, and gather the evidence needed to support our conclusions.",
+    description: "Documents, interviews, walkthroughs, and system or control evaluation.",
   },
   {
     title: "Assess and analyze",
-    description:
-      "We identify risks, gaps, control weaknesses, maturity issues, root causes, dependencies, and business implications using the agreed method.",
+    description: "Risks, gaps, control weaknesses, root causes, and business implications.",
   },
   {
     title: "Validate findings",
-    description:
-      "Key facts and findings are discussed with your stakeholders to confirm accuracy, understand context, and shape practical remediation options.",
+    description: "Key facts discussed with your stakeholders to confirm accuracy and shape remediation.",
   },
   {
     title: "Report and prioritize",
-    description:
-      "You receive decision-relevant findings, recommendations, and priorities — and where appropriate a roadmap, risk treatment plan, implementation backlog, or executive briefing.",
+    description: "Decision-relevant findings and priorities, with a roadmap or executive briefing where useful.",
   },
   {
     title: "Support improvement",
-    description:
-      "Where required, we continue through implementation support, recurring advisory, remediation tracking, program development, training, or periodic reassessment.",
+    description: "Implementation support, recurring advisory, training, or reassessment, as required.",
   },
 ];
 
 export const deliveryModel =
-  "Atlantic Fortis uses a virtual-first and hybrid model. Advisory work, assessments, documentation, meetings, and workshops are typically delivered remotely. On-site attendance is used for audits, executive workshops, interviews, incident-related activities, or other work where physical presence adds value.";
+  "A virtual-first, hybrid model. Advisory work, assessments, and workshops are typically remote. On-site attendance is used for audits, executive workshops, and incident-related work where presence adds value.";
 
 // Frameworks and standards — presented with context, not as a logo wall.
 export const frameworks: { name: string; note: string }[] = [

@@ -39,7 +39,6 @@ export default async function ContactPage(props: PageProps<"/contact">) {
 
   return (
     <section className="relative overflow-hidden border-b border-line bg-mist">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-ledger mask-fade-b opacity-70" />
       <Container className="relative py-16 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
           <Reveal>
@@ -48,7 +47,7 @@ export default async function ContactPage(props: PageProps<"/contact">) {
               Request a consultation
             </h1>
             <p className="mt-6 text-lg leading-8 text-ink-soft">
-              The goal of this first step is a short discovery conversation — not a long
+              The goal of this first step is a short discovery conversation, not a long
               questionnaire. A sentence or two about your situation is enough for us to
               prepare.
             </p>
@@ -56,7 +55,7 @@ export default async function ContactPage(props: PageProps<"/contact">) {
             <dl className="mt-10 space-y-6">
               {facts.map((f) => (
                 <div key={f.title} className="flex gap-4">
-                  <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-md bg-surface text-accent-ink ring-1 ring-line">
+                  <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-ink">
                     <f.icon className="h-5 w-5" aria-hidden strokeWidth={1.75} />
                   </span>
                   <div>
@@ -85,7 +84,7 @@ export default async function ContactPage(props: PageProps<"/contact">) {
 
           <Reveal
             delay={0.1}
-            className="rounded-lg border border-line bg-surface p-6 sm:p-9"
+            className="rounded-3xl border border-line bg-surface p-6 shadow-soft sm:p-9"
           >
             <ContactForm defaultInterest={defaultInterest} />
           </Reveal>
